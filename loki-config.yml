@@ -1,0 +1,23 @@
+# -------------------------------------------------------- #
+# Loki Configuration File
+# -------------------------------------------------------- #
+
+auth_enabled: false   # No authentication needed for this demo
+server:
+  http_listen_port: 3100   # API and web interface port
+
+common:
+  path_prefix: /tmp/loki   # Where Loki stores its data
+  storage:
+    filesystem:
+      chunks_directory: /tmp/loki/chunks   # Compressed log chunks
+
+schema_config:
+  configs:
+    - from: 2020-10-24
+      store: boltdb-shipper   # Storage engine
+      object_store: filesystem   # Where to store chunks
+      schema: v11
+      index:
+        prefix: index_
+        period: 24h   # Create new index daily

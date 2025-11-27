@@ -1,0 +1,17 @@
+# -------------------------------------------------------- #
+# Promtail Configuration File
+# -------------------------------------------------------- #
+
+server:
+  http_listen_port: 9080  # Promtail's internal metrics port
+
+clients:
+  - url: http://loki-container:3100/loki/api/v1/push  # Where to send logs
+
+scrape_configs:
+  - job_name: app
+    static_configs:
+      - targets: ["localhost"]
+        labels:
+          job: myapp  # Label for querying in Grafana
+          __path__: /logs/app.log  # Path inside container to watch
