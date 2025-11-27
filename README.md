@@ -11,19 +11,19 @@ A centralized logging system that collects, stores, and visualizes logs from mul
 
 --------------------------------------------------------
 # 🏗️ The Architecture
-1. Python Log Generator Script
+1. Python Log Generator Script:
 Purpose: Simulates real applications generating logs
 Why: In production, you'd have actual apps (web servers, databases, microservices) generating logs
 What it does: Creates realistic time-stamped logs with different severity levels (INFO, WARNING, ERROR)
 
-2. Promtail
+2. Promtail:
 Purpose: Log collector/shipper
 What it does:
     - Watches the log files using a glob pattern (/work/logs/*.log)
     - Adds metadata (labels) like job="pythonapps" and filename="/work/logs/app1.log"
     - Ships logs to Loki in real-time
 
-3. Loki
+3. Loki:
 Purpose: Log aggregation and storage system (like Prometheus, but for logs)
 Why: Stores logs more efficiently than Prometheus by avoiding full-text indexing
 What it does:
@@ -32,7 +32,7 @@ What it does:
     - Stores compressed log data
     - Provides a query API
 
-4. Grafana
+4. Grafana:
 Purpose: Visualization and query interface
 What it does:
     - Connects to Loki as a data source
