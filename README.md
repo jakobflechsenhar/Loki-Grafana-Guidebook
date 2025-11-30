@@ -4,7 +4,8 @@
 
 --------------------------------------------------------
 ### 💡 The Big Picture
-A centralized logging system that collects, stores, and visualizes logs from multiple sources - eliminating the need to SSH into individual servers to check log files.
+
+A centralized logging system that collects, stores, and visualizes logs from multiple sources: eliminating the need to SSH into individual servers to check log files.
 --------------------------------------------------------
 
 --------------------------------------------------------
@@ -59,9 +60,9 @@ This command creates a new container called 'loki-container' from the base Grafa
 ```bash
 python3 -u log-generator-script.py > generated-logs.log &
 ```
-        python3 log-generator-script.py - runs the python script that generates logs
-        > generated-logs.log - redirects all output into a file called generated-logs.log
-        & - runs the command in the background
+python3 log-generator-script.py - runs the python script that generates logs
+> generated-logs.log - redirects all output into a file called generated-logs.log
+& - runs the command in the background
 
 4. Start Promtail:
 ```bash
@@ -81,12 +82,12 @@ grafana/grafana:latest
 ```
 
 6. Configure Grafana:
-a. Access Grafana: http://localhost:3000 (login: admin/admin)
-b. Add Loki Data Source: Data Sources → Add data source → Choose "Loki" → URL: http://loki-container:3100 → Click "Save & Test"
-c. Query Logs: Go to Explore, try these queries:
-     {job="myapp"} # All logs
-     {job="myapp"} |= "ERROR" # Only errors
-     count_over_time({job="myapp"} |= "ERROR" [1m]) # Count errors per minute
+- Access Grafana: http://localhost:3000 (login: admin/admin)
+- Add Loki Data Source: Data Sources → Add data source → Choose "Loki" → URL: http://loki-container:3100 → Click "Save & Test"
+- Query Logs: Go to Explore, try these queries:
+    - {job="myapp"} # All logs
+    - {job="myapp"} |= "ERROR" # Only errors
+    - count_over_time({job="myapp"} |= "ERROR" [1m]) # Count errors per minute
 
 7. Cleanup:
 ```bash
