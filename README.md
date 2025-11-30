@@ -63,10 +63,9 @@ This command creates a new container called 'loki-container' from the base Grafa
 ```bash
 python3 -u log-generator-script.py > generated-logs.log &
 ```
-
-"python3 log-generator-script.py" - runs the python script that generates logs
-"> generated-logs.log" - redirects all output into a file called generated-logs.log
-"&" - runs the command in the background
+- "python3 log-generator-script.py" - runs the python script that generates logs
+- "> generated-logs.log" - redirects all output into a file called generated-logs.log
+- "&" - runs the command in the background
 
 #### 4. Start Promtail:
 ```bash
